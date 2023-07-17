@@ -8,7 +8,9 @@ interface ICellProps {
 }
 
 const CellComponent: FC<ICellProps> = ({cell}) => {
-  return <div className={[styles.cell, styles[cell.color]].join(' ')}></div>
+  return <div className={[styles.cell, styles[cell.color]].join(' ')}>
+    {/* {cell.figure} */}
+  </div>
 }
 
 export default CellComponent
