@@ -25,4 +25,8 @@
 	&.white {
 		background-color: $white;
 	}
+
+	&.selected {
+		background-color: #922323;
+	}
 }

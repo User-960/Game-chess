@@ -6,11 +6,20 @@ import { Cell } from '@/models/Cell'
 
 interface ICellProps {
 	cell: Cell
+	selected: boolean
+	click: (cell: Cell) => void
 }
 
-const CellComponent: FC<ICellProps> = ({ cell }) => {
+const CellComponent: FC<ICellProps> = ({ cell, selected, click }) => {
 	return (
-		<div className={[styles.cell, styles[cell.color]].join(' ')}>
+		<div
+			className={[
+				styles.cell,
+				styles[cell.color],
+				selected ? styles.selected : ''
+			].join(' ')}
+			onClick={() => click(cell)}
+		>
 			{cell.figure?.logo && (
 				<Image
 					className={styles.figure}
