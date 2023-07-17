@@ -1,4 +1,5 @@
 import {Cell} from './Cell'
+import { Colors } from './Colors'
 
 export class Board {
   // row and columns
@@ -12,9 +13,9 @@ export class Board {
       // Create 1 row with 8 cells
       for (let j = 0; j < 8; j++) {
         if ((i + j) % 2 !== 0) {
-          row.push(new Cell()) // Black color
+          row.push(new Cell(this, j, i, Colors.BLACK, null)) // Black color
         } else {
-          row.push(new Cell()) // White color
+          row.push(new Cell(this, j, i, Colors.WHITE, null)) // White color
         }
       }
 
