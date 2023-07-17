@@ -1,10 +1,14 @@
 import { FC } from 'react'
 import styles from './Board.module.scss'
+import { Cell } from '@/models/Cell'
+import cn from 'clsx'
 
-const CellComponent: FC = () => {
-  return <div className={styles.cell}>
-    Cell
-  </div>
+interface ICellProps {
+  cell: Cell
+}
+
+const CellComponent: FC<ICellProps> = ({cell}) => {
+  return <div className={[styles.cell, styles[cell.color]].join(' ')}></div>
 }
 
 export default CellComponent

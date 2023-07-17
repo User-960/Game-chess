@@ -13,12 +13,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.black {
-  background-color: $black;  
-}
+  &.black {
+    background-color: $black;  
+  }
 
-.white {
-  background-color: $white;  
+  &.white {
+    background-color: $white;  
+  }
 }
