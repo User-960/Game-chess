@@ -11,10 +11,18 @@ interface IBoardProps {
 }
 
 const BoardComponent: FC<IBoardProps> = ({ board, setBoard }) => {
-	const [selectedCell, setSelectedCell] = useState<Cell | null>()
+	const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
 
 	const click = (cell: Cell) => {
-		if (cell.figure) {
+		if (
+			selectedCell &&
+			selectedCell !== cell &&
+			selectedCell.figure?.canMove(cell)
+		) {
+			selectedCell.moveFigure(cell)
+			setSelectedCell(null)
+			updateBoard()
+		} else {
 			setSelectedCell(cell)
 		}
 	}
@@ -24,10 +32,8 @@ const BoardComponent: FC<IBoardProps> = ({ board, setBoard }) => {
 	}, [selectedCell])
 
 	const highlightCells = () => {
-		if (selectedCell) {
-			board.highlightCells(selectedCell)
-			updateBoard()
-		}
+		board.highlightCells(selectedCell)
+		updateBoard()
 	}
 
 	const updateBoard = () => {
