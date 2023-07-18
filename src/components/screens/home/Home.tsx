@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react'
 
 import BoardComponent from '../board/BoardComponent'
 import LostFigures from '../lost-figures/LostFigures'
+import Timer from '../timer/Timer'
 
 import styles from './Home.module.scss'
 import { Board } from '@/models/Board'
@@ -37,6 +38,8 @@ const Home: FC = () => {
 
 	return (
 		<div className='wrapper-inner-page'>
+			<Timer restart={restart} currentPlayer={currentPlayer} />
+
 			<BoardComponent
 				board={board}
 				setBoard={setBoard}

@@ -1,0 +1,36 @@
+.timer {
+	height: 200px;
+	padding: 30px;
+	background-color: #d6a75b;
+	border-radius: 15px;
+	margin: 15px 0px;
+	margin-right: 50px;
+	box-shadow: 0 0 5px 5px #3b3b3b;
+
+	> .button {
+		border: none;
+		outline: none;
+		width: 80px;
+		height: 50px;
+		padding: 10px;
+		border-radius: 10px;
+		background-color: #f64848;
+		margin-bottom: 20px;
+		box-shadow: 0 0 2px 2px #7a4c4c;
+		cursor: pointer;
+		color: #fff;
+	}
+
+	> .counter {
+		font-size: 16px;
+		width: 90px;
+		& .black {
+			color: #000;
+			font-weight: bold;
+		}
+		& .white {
+			color: #fff;
+			font-weight: bold;
+		}
+	}
+}
