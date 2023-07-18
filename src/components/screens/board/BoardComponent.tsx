@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from 'react'
+import { FC, Fragment, useEffect, useState } from 'react'
 
 import styles from './Board.module.scss'
 import CellComponent from './CellComponent'
@@ -17,6 +17,22 @@ const BoardComponent: FC<IBoardProps> = ({ board, setBoard }) => {
 		if (cell.figure) {
 			setSelectedCell(cell)
 		}
+	}
+
+	useEffect(() => {
+		highlightCells()
+	}, [selectedCell])
+
+	const highlightCells = () => {
+		if (selectedCell) {
+			board.highlightCells(selectedCell)
+			updateBoard()
+		}
+	}
+
+	const updateBoard = () => {
+		const newBoard = board.getCopyBoard()
+		setBoard(newBoard)
 	}
 
 	return (

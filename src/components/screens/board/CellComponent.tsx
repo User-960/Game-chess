@@ -19,7 +19,11 @@ const CellComponent: FC<ICellProps> = ({ cell, selected, click }) => {
 				selected ? styles.selected : ''
 			].join(' ')}
 			onClick={() => click(cell)}
+			style={{ background: cell.available && cell.figure ? 'green' : '' }}
 		>
+			{cell.available && !cell.figure && (
+				<div className={styles.available}></div>
+			)}
 			{cell.figure?.logo && (
 				<Image
 					className={styles.figure}
