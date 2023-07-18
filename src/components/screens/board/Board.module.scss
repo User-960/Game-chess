@@ -11,6 +11,10 @@
 	height: calc(64px * 8);
 	display: flex;
 	flex-wrap: wrap;
+
+	outline: 7px solid #ffe09e;
+	border-radius: 7px;
+	box-shadow: 0 0 5px 5px #3b3b3b;
 }
 
 .cell {
