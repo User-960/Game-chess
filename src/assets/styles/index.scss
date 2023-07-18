@@ -68,16 +68,16 @@ img {
 
 #__next {
 	height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .wrapper-inner-page {
-	padding: 40px 30px;
+	padding: 20px;
 	text-align: center;
-	max-width: 560px;
+	max-width: 600px;
 	width: 100%;
 	margin: 0 auto;
 }

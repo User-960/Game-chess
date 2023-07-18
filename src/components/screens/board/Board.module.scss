@@ -1,5 +1,11 @@
 @import 'src/assets/styles/variables';
 
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 .board {
 	width: calc(64px * 8);
 	height: calc(64px * 8);
@@ -14,8 +20,9 @@
 	justify-content: center;
 	align-items: center;
 
-	&.figure {
+	> .figure {
 		position: relative;
+		user-select: none;
 	}
 
 	&.black {
@@ -36,4 +43,19 @@
 	width: 12px;
 	border-radius: 50%;
 	background-color: #22c022;
+}
+
+.player {
+	margin: 20px 0;
+	color: $white;
+	> .black {
+		color: #797979;
+		font-size: bold;
+		text-transform: uppercase;
+	}
+	> .white {
+		color: #e9e9e9;
+		font-size: bold;
+		text-transform: uppercase;
+	}
 }

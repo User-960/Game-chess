@@ -4,13 +4,21 @@ import styles from './Board.module.scss'
 import CellComponent from './CellComponent'
 import { Board } from '@/models/Board'
 import { Cell } from '@/models/Cell'
+import { Player } from '@/models/Player'
 
 interface IBoardProps {
 	board: Board
 	setBoard: (board: Board) => void
+	currentPlayer: Player | null
+	swapPlayer: () => void
 }
 
-const BoardComponent: FC<IBoardProps> = ({ board, setBoard }) => {
+const BoardComponent: FC<IBoardProps> = ({
+	board,
+	setBoard,
+	currentPlayer,
+	swapPlayer
+}) => {
 	const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
 
 	const click = (cell: Cell) => {
@@ -20,10 +28,13 @@ const BoardComponent: FC<IBoardProps> = ({ board, setBoard }) => {
 			selectedCell.figure?.canMove(cell)
 		) {
 			selectedCell.moveFigure(cell)
+			swapPlayer()
 			setSelectedCell(null)
 			updateBoard()
 		} else {
-			setSelectedCell(cell)
+			if (cell.figure?.color === currentPlayer?.color) {
+				setSelectedCell(cell)
+			}
 		}
 	}
 
@@ -42,7 +53,17 @@ const BoardComponent: FC<IBoardProps> = ({ board, setBoard }) => {
 	}
 
 	return (
-		<>
+		<div className={styles.wrapper}>
+			<h3 className={styles.player}>
+				Current Player:{' '}
+				<span
+					className={
+						currentPlayer?.color === 'white' ? styles.white : styles.black
+					}
+				>
+					{currentPlayer?.color}
+				</span>
+			</h3>
 			<div className={styles.board}>
 				{board.cells.map((row: Cell[], index: number) => (
 					<Fragment key={index}>
@@ -59,7 +80,7 @@ const BoardComponent: FC<IBoardProps> = ({ board, setBoard }) => {
 					</Fragment>
 				))}
 			</div>
-		</>
+		</div>
 	)
 }
 
