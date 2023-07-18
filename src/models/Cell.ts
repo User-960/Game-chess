@@ -27,7 +27,7 @@ export class Cell {
 		this.id = Math.random()
 	}
 
-	isEmpty() {
+	isEmpty(): boolean {
 		return this.figure === null
 	}
 
@@ -49,6 +49,19 @@ export class Cell {
 	}
 
 	isEmptyHorizontal(target: Cell): boolean {
+		if (this.y !== target.y) {
+			return false
+		}
+
+		const min = Math.min(this.x, target.x)
+		const max = Math.max(this.x, target.x)
+
+		for (let x = min + 1; x < max; x++) {
+			if (!this.board.getCell(x, this.y).isEmpty()) {
+				return false
+			}
+		}
+
 		return true
 	}
 
