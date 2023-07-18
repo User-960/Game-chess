@@ -13,8 +13,22 @@ export class Knight extends Figure {
 		this.name = FigureNames.KNIGHT
 	}
 
-  canMove(target: Cell) {
+	// 4,4
+	// ---
+	// 2,3
+	// 3,2
+	// 6,3
+	// 3,6
+	// 5,6
+	// 6,5
+	// 5,3
+	// 3,5
+	// Difference between cells is only 2 and 1
+	// without dependence of which x or y
+	canMove(target: Cell) {
 		if (!super.canMove(target)) return false
-		return true
+		const dx = Math.abs(this.cell.x - target.x)
+		const dy = Math.abs(this.cell.y - target.y)
+		return (dx === 1 && dy === 2) || (dx === 2 && dy === 1)
 	}
 }
