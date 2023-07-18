@@ -32,7 +32,7 @@ const CellComponent: FC<ICellProps> = ({ cell, selected, click }) => {
 					width={48}
 					height={48}
 					draggable={false}
-					priority
+					priority={true}
 				/>
 			)}
 		</div>

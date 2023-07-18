@@ -1,7 +1,10 @@
+import { table } from 'console'
 import { FC, useEffect, useState } from 'react'
 
 import BoardComponent from '../board/BoardComponent'
+import LostFigures from '../lost-figures/LostFigures'
 
+import styles from './Home.module.scss'
 import { Board } from '@/models/Board'
 import { Colors } from '@/models/Colors'
 import { Player } from '@/models/Player'
@@ -40,6 +43,11 @@ const Home: FC = () => {
 				currentPlayer={currentPlayer}
 				swapPlayer={swapPlayer}
 			/>
+
+			<div>
+				<LostFigures title='Black Figures' figures={board.lostBlackFigures} />
+				<LostFigures title='White Figures' figures={board.lostWhiteFigures} />
+			</div>
 		</div>
 	)
 }
